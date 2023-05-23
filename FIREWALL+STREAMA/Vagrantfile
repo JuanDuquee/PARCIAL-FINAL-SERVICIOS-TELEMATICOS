@@ -1,0 +1,21 @@
+Vagrant.configure("2") do |config|
+  if Vagrant.has_plugin? "vagrant-vbguest"
+  config.vbguest.no_install = true
+  config.vbguest.auto_update = false
+  config.vbguest.no_remote = true
+  end
+  config.vm.box = "base"
+    config.vm.define :firewall2 do |firewall2|
+    firewall2.vm.box = "bento/centos-7"
+    firewall2.vm.hostname = "firewall2"
+    firewall2.vm.network :private_network, ip: "192.168.50.3"
+    firewall2.vm.network :public_network, bridge: "Intel(R) Ethernet Connection (7) I219-V"
+    firewall2.vm.provision "shell", path: "firewall.sh"
+  end
+  config.vm.define :streama2 do |streama2|
+    streama2.vm.box = "bento/centos-7"
+    streama2.vm.hostname = "streama2"
+    streama2.vm.network :private_network, ip: "192.168.50.4"
+    streama2.vm.provision "shell", path: "streama.sh"
+  end
+end
