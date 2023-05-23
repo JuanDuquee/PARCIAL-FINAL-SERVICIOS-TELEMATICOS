@@ -1,0 +1,38 @@
+Crear un entorno:
+python -m venv venv
+
+Dirigirnos al entorno:
+.\venv\Scripts\activate
+
+Instalar los paquetes necesarios para correr la app:
+pip install flask
+pip install flask-mysqldb
+
+Para correr la app:
+python apirest_mysql.py
+
+Para correr el cliente.js:
+node cliente.js
+
+MySQL
+
+CREATE DATABASE myflaskapp;
+use myflaskapp;
+
+CREATE TABLE books (
+    id int NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    title varchar(255),
+    description varchar(255),
+    author varchar(255)
+);
+
+
+INSERT INTO books VALUES(null, "La hojarasca", "Interesante", "Gabo"),
+    (null, "El principito", "Brillante", "Antoine de Saint");
+
+SELECT * FROM books;
+
+TRUNCATE TABLE books;
+
+ALTER TABLE books AUTO_INCREMENT = 1;
+
